@@ -1,0 +1,11 @@
+<!doctype html>
+<head>
+    <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{url_for('static',filename='dist/css/output.css')}}">
+</head>
+<title>kebulle.fi - {% block title %}{% endblock %}</title>
+<div class="container mx-auto max-w-4xl p-3">
+{% include "includes/header.html" %}
+{% block content %}{% endblock %}
+</div>

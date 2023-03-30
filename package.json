@@ -1,0 +1,22 @@
+{
+  "name": "kebulle-fi",
+  "version": "1.0.0",
+  "description": "Paikka johon menet, kun haluat löytää parhaimman kebulan suomesta. Oikeiden ihmisten mielipiteen mukaan.",
+  "main": "index.js",
+  "scripts": {
+    "tailwind": "npx tailwindcss -i ./src/static/src/input.css -o ./src/static/dist/css/output.css --watch" 
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MineTech0/kebulle-fi.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MineTech0/kebulle-fi/issues"
+  },
+  "homepage": "https://github.com/MineTech0/kebulle-fi#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.3.0"
+  }
+}
