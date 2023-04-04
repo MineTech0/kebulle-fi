@@ -4,7 +4,8 @@
   "description": "Paikka johon menet, kun haluat löytää parhaimman kebulan suomesta. Oikeiden ihmisten mielipiteen mukaan.",
   "main": "index.js",
   "scripts": {
-    "tailwind": "npx tailwindcss -i ./src/static/src/input.css -o ./src/static/dist/css/output.css --watch" 
+    "tailwind": "npx tailwindcss -i ./src/static/src/input.css -o ./src/static/dist/css/output.css --watch",
+    "build" : "npx tailwindcss -i ./src/static/src/input.css -o ./src/static/dist/css/output.css"
   },
   "repository": {
     "type": "git",

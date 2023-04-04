@@ -11,3 +11,28 @@ Toteutettu Helsingin Yliopiston kurssilla [Tietokantasovellus](https://studies.h
 * Ravintoloiden kommentointi
 * Kebabilat lueteltu alueellisesti
 * Suomen laajuinen ravintola leaderboard
+
+## Käynnistys
+
+Kopioi .env.example tiedosto .env tiedostoksi ja täytä tarvittavat tiedot.
+
+### Asenna riippuvuudet 
+
+```npm install```
+
+``python3 -m venv venv``
+
+``source venv/bin/activate``
+
+``pip install -r requirements.txt``
+
+Buildaa frontend
+
+``npm run build``
+
+### Käynnistä sovellus
+
+``flask --app src/app run``
+
+
+
