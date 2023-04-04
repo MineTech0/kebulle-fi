@@ -30,6 +30,10 @@ Buildaa frontend
 
 ``npm run build``
 
+Alusta tietokanta
+
+``psql < schema.sql``
+
 ### Käynnistä sovellus
 
 ``flask --app src/app run``
