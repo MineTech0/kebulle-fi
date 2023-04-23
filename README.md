@@ -6,11 +6,12 @@ Toteutettu Helsingin Yliopiston kurssilla [Tietokantasovellus](https://studies.h
 
 ## Ominaisuudet
 
-- [-] Kebab ravintoloiden arvostelu
+- [x] Kebab ravintoloiden arvostelu
+- [x] Kebab ravintoloiden lisääminen
+- [x] Ravintoloiden kommentointi
+- [x] Kebabilat lueteltu alueellisesti
 - [ ] Suosituimman ravintolan äänestäminen
-- [-] Ravintoloiden kommentointi
-- [-] Kebabilat lueteltu alueellisesti
-- Suomen laajuinen ravintola leaderboard
+- [ ] Suomen laajuinen ravintola leaderboard
 
 ## Käynnistys
 
