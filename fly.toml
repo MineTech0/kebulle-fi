@@ -1,0 +1,26 @@
+# fly.toml app configuration file generated for kebulle-fi on 2023-04-23T22:33:40+03:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = "kebulle-fi"
+primary_region = "arn"
+
+[build]
+  builder = "paketobuildpacks/builder:base"
+
+[env]
+  PORT = "5000"
+
+[http_service]
+  internal_port = 5000
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+
+[checks]
+  [checks.alive]
+    type = "tcp"
+    interval = "15s"
+    timeout = "2s"
+    grace_period = "5s"
