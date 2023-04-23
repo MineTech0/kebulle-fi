@@ -43,3 +43,24 @@ vote BOOLEAN NOT NULL,
 created_at DATE NOT NULL,
 restaurant_id INTEGER REFERENCES restaurants(id) ON DELETE CASCADE
 );
+
+INSERT INTO regions (name)
+VALUES ('Ahvenanmaa'),
+       ('Etelä-Karjala'),
+       ('Etelä-Pohjanmaa'),
+       ('Etelä-Savo'),
+       ('Kainuu'),
+       ('Kanta-Häme'),
+       ('Keski-Pohjanmaa'),
+       ('Keski-Suomi'),
+       ('Kymenlaakso'),
+       ('Lappi'),
+       ('Päijät-Häme'),
+       ('Pirkanmaa'),
+       ('Pohjanmaa'),
+       ('Pohjois-Karjala'),
+       ('Pohjois-Pohjanmaa'),
+       ('Pohjois-Savo'),
+       ('Satakunta'),
+       ('Uusimaa'),
+       ('Varsinais-Suomi');
