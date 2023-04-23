@@ -1,6 +1,11 @@
 import os
-from flask_sqlalchemy import SQLAlchemy
-from src.app import app
+import psycopg2
 
-app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
-connection = SQLAlchemy(app)
+
+connection = psycopg2.connect(
+    dbname=os.getenv("DATABASE_NAME"),
+    user=os.getenv("DATABASE_USER"),
+    password=os.getenv("DATABASE_PASSWORD"),
+    host=os.getenv("DATABASE_HOST"),
+    port=os.getenv("DATABASE_PORT")
+)
