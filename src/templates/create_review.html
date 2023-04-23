@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+{% block title %}Ravintolat{% endblock %}
+{% block content %}
+<div class="page-container">
+  <h2>Lisää arvostelu</h2>
+  <form method="POST" action="{{ url_for('add_review', restaurant_id=restaurant.id) }}">
+    <div class="mb-4">
+      <label class="form-label" for="user_name">
+        Nimi
+      </label>
+      <input required class="form-input" name="user_name" type="text" placeholder="Syötä nimesi">
+    </div>
+    <div class="mb-4">
+      <label class="form-label" for="comment">
+        Kommentti
+      </label>
+      <textarea required class="form-input" name="comment" placeholder="Kirjoita arvostelusi"></textarea>
+    </div>
+    <div class="mb-4">
+      <label class="form-label" for="sauce_rating">
+        Kastike-arvosana
+      </label>
+      <input required class="form-input" name="sauce_rating" type="number" min="1" max="10" step="1" placeholder="1-10">
+    </div>
+    <div class="mb-4">
+      <label class="form-label" for="meat_rating">
+        Liha-arvosana
+      </label>
+      <input required class="form-input" name="meat_rating" type="number" min="1" max="10" step="1" placeholder="1-10">
+    </div>
+    <div class="mb-4">
+      <label class="form-label" for="service_rating">
+        Palveluarvosana
+      </label>
+      <input required class="form-input" name="service_rating" type="number" min="1" max="10" step="1" placeholder="1-10">
+    </div>
+    <div class="mb-4">
+      <label class="form-label" for="price_rating">
+        Hinta-arvosana
+      </label>
+      <input required class="form-input" name="price_rating" type="number" min="1" max="10" step="1" placeholder="1-10">
+    </div>
+    <div class="mb-4">
+      <label class="form-label" for="cleanliness_rating">
+        Siisteysarvosana
+      </label>
+      <input required class="form-input" name="cleanliness_rating" type="number" min="1" max="10" step="1" placeholder="1-10">
+    </div>
+    <div class="mb-4">
+      <label class="form-label" for="sides_rating">
+        Lisäkearvosana
+      </label>
+      <input required class="form-input" name="sides_rating" type="number" min="1" max="10" step="1" placeholder="1-10">
+    </div>
+    <div class="mb-4">
+      <label class="form-label" for="fries_rating">
+        Ranskalaisten arvosana
+      </label>
+      <input required class="form-input" name="fries_rating" type="number" min="1" max="10" step="1" placeholder="1-10">
+    </div>
+    <div class="mb-4">
+      <label class="form-label" for="vegan_options">
+        Vegaanivaihtoehtoja
+        </label>
+        <select class="form-input" name="vegan_option">
+            <option value="0">Ei</option>
+            <option value="1">Kyllä</option>
+        </select>
+
+</div>
+    <button class="primary-button" type="submit">Lisää arvostelu</button>
+  </form>
+{% endblock %}

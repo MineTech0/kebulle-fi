@@ -6,9 +6,28 @@
 
 @layer base {
     h2 {
-      @apply text-4xl font-bold tracking-tight text-gray-900;
+      @apply text-4xl font-bold tracking-tight text-gray-900 mb-6;
+    }
+    h3 {
+      @apply text-2xl font-bold tracking-tight text-gray-900 mb-4;
+    }
+    h4 {
+      @apply text-xl font-bold tracking-tight text-gray-900 mb-2;
     }
     .page-container {
         @apply max-w-7xl mx-auto px-2 py-4 border min-h-screen;
+    }
+    .form-input {
+      @apply shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none;
+    }
+    .form-label {
+      @apply block text-gray-700 text-sm font-bold mb-2;
+    }
+    .primary-button {
+      @apply cursor-pointer bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none;
+      white-space: nowrap;
+    }
+    .hidden {
+      display: none;
     }
   }

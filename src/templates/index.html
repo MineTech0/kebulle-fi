@@ -2,7 +2,24 @@
 {% block title %}Etusivu{% endblock %}
 {% block content %}
 <div class="page-container">
-    <h2>Etusivu</h2>
-    Tervetuloa sovellukseen!
+    Tervetuloa sivustollemme. Tämä sivuston tarkoituksena on tarjota käyttäjille arvokasta tietoa kebab-ravintoloista ympäri Suomea.
+<div class="my-5">
+    <h3>Suosituin ravintola</h3>
+    <a href="{{ url_for('show_restaurant', id=restaurant.id) }}">
+        <div
+            class="bg-white border rounded-lg shadow-md overflow-hidden transition duration-300 ease-in-out hover:bg-gray-100">
+            <div class="p-4">
+                <h2 class="text-lg font-bold mb-2">{{ restaurant.name }}</h2>
+                <p class="text-gray-700 mb-4">{{ restaurant.address }}, {{ restaurant.city }}, {{ restaurant.region
+                    }}
+                </p>
+                {% with rating=restaurant.rating %}
+                {% include 'includes/rating_chip.html' %}
+                {% endwith %}
+
+            </div>
+        </div>
+    </a>
+</div>
 </div>
 {% endblock %}

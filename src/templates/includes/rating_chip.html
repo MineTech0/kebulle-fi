@@ -1,0 +1,10 @@
+<div class="inline-block px-2 py-1 text-sm font-semibold rounded-full
+            {% if rating >= 8 %}
+              bg-green-500 text-white
+            {% elif rating >= 6 %}
+              bg-yellow-500 text-white
+            {% else %}
+              bg-red-500 text-white
+            {% endif %}">
+  <p>{{ '{:.2f}'.format(rating) }}</p>
+</div>

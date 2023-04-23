@@ -3,5 +3,17 @@
 {% block content %}
 <div class="page-container">
     <h2>Paikkakunnat</h2>
+    <div class="grid md:grid-cols-3 sm:grid-cols-2 gap-4">
+        {% for region in regions %}
+          <div>
+            <h2 class="text-2xl font-bold mb-2">{{ region.name }}</h2>
+            <ul class="list-disc">
+              {% for city in region.cities %}
+                <a class="underline" href="{{ url_for('restaurants', city=city.name)}}">{{ city.name }}</a>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endfor %}
+      </div>
 </div>
 {% endblock %}

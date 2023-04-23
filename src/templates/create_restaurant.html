@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+{% block title %}Ravintolat{% endblock %}
+{% block content %}
+<div class="page-container">
+  <h2>Lisää ravintola</h2>
+  <form method="post" action="/restaurants">
+    <div class="mb-4">
+      <label class="form-label for="name">
+        Nimi
+      </label>
+      <input required class="form-input" name="name" type="text" placeholder="Syötä ravintolan nimi">
+    </div>
+    <div class="mb-4">
+      <label class="form-label" for="address">
+        Osoite
+      </label>
+      <input required class="form-input" name="address" type="text" placeholder="Syötä osoite">
+    </div>
+    <div class="mb-4">
+      <label class="form-label" for="city">
+        Kaupunki
+      </label>
+      <select class="form-input" name="city" onchange="checkCityOption(this.value)">
+        <option value="">Valitse kaupunki</option>
+        {% for region in regions %}
+        <optgroup label="{{ region.name }}">
+          {% for city in region.cities %}
+          <option value="{{ city.id }}">{{ city.name }}</option>
+          {% endfor %}
+        </optgroup>
+        {% endfor %}
+        <option value="other">Muu kaupunki</option>
+      </select>
+      <div id="other-city-inputs" class="hidden mt-4">
+        <label class="form-label for="region">
+          Maakunta
+        </label>
+        <select class="form-input" name="region">
+          {% for region in regions %}
+          <option value="{{ region.id }}">{{ region.name }}</option>
+          {% endfor %}
+        </select>
+        <input class="form-input mt-4" name="other-city" type="text" placeholder="Syötä uusi kaupunki">
+      </div>
+    </div>
+    <div class="flex items-center justify-between">
+      <button class="primary-button" type="submit">
+        Lisää ravintola
+      </button>
+    </div>
+  </form>
+
+</div>
+{% endblock %}
+
+{% block script %}
+<script>
+  function checkCityOption(value) {
+    if (value === 'other') {
+      document.getElementById('other-city-inputs').classList.remove('hidden');
+    } else {
+      document.getElementById('other-city-inputs').classList.add('hidden');
+    }
+  }
+</script>
+{% endblock %}
