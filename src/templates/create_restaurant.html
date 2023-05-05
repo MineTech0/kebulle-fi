@@ -4,6 +4,7 @@
 <div class="page-container">
   <h2>Lisää ravintola</h2>
   <form method="post" action="/restaurants">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
     <div class="mb-4">
       <label class="form-label for="name">
         Nimi

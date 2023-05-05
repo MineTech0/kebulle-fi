@@ -4,6 +4,7 @@
 <div class="page-container">
   <h2>Lisää arvostelu</h2>
   <form method="POST" action="{{ url_for('add_review', restaurant_id=restaurant.id) }}">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
     <div class="mb-4">
       <label class="form-label" for="user_name">
         Nimi
