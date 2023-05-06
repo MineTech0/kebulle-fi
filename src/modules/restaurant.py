@@ -124,6 +124,7 @@ def get_restaurant_with_reviews(restaurant_id):
 
     return restaurant
 
+
 def get_best_rated_restaurant():
     cur = db.connection.cursor()
     cur.execute('SELECT r.id, r.name, r.address, c.name, re.name, r.rating FROM restaurants r JOIN cities c ON r.city_id=c.id JOIN regions re ON c.region_id=re.id ORDER BY r.rating DESC LIMIT 1')

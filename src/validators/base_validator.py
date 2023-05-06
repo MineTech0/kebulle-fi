@@ -11,8 +11,8 @@ class BaseValidator():
         num = int(num)
         return num >= min_value and num <= max_value
 
-    def isBoolean(self, bool):
-        return bool is True or bool is False
+    def isBoolean(self, bool_value):
+        return bool_value is True or bool_value is False
 
     def getErrors(self):
         return self.errors
