@@ -20,9 +20,9 @@
     {% set city_param = request.args.get('city') %}
     <div class="flex flex-row gap-2 my-3">
         <a href="{{ url_for(request.endpoint, sortBy='rating', city=city_param) }}"
-            class="text-blue-500 hover:text-blue-700 underline">Suodata arvostelu</a>
+            class="text-blue-500 hover:text-blue-700 underline">Järjestä arvostelu</a>
         <a href="{{ url_for(request.endpoint, sortBy='name', city=city_param) }}"
-            class="text-blue-500 hover:text-blue-700 underline">Suodata nimi</a>
+            class="text-blue-500 hover:text-blue-700 underline">Järjestä nimi</a>
     </div>
     <div class="grid grid-cols-1 gap-2">
         {% for restaurant in restaurants %}
