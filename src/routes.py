@@ -32,6 +32,15 @@ def restaurants():
         restaurants_list = restaurant.get_all_restaurants_by_city(city_name)
     else:
         restaurants_list = restaurant.get_all_restaurants()
+
+    sort_by = request.args.get('sortBy')
+
+    if sort_by and sort_by == 'rating':
+        restaurants_list = sorted(
+            restaurants_list, key=lambda k: k['rating'], reverse=True)
+    elif sort_by and sort_by == 'name':
+        restaurants_list = sorted(restaurants_list, key=lambda k: k['name'])
+
     return render_template('restaurants.html', restaurants=restaurants_list, city_name=city_name)
 
 
