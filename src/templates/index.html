@@ -4,7 +4,9 @@
 <div class="page-container">
     Tervetuloa sivustollemme. Tämä sivuston tarkoituksena on tarjota käyttäjille arvokasta tietoa kebab-ravintoloista ympäri Suomea.
 <div class="my-5">
+    {% if restaurant %}
     <h3>Suosituin ravintola</h3>
+
     <a href="{{ url_for('show_restaurant', id=restaurant.id) }}">
         <div
             class="bg-white border rounded-lg shadow-md overflow-hidden transition duration-300 ease-in-out hover:bg-gray-100">
@@ -20,6 +22,7 @@
             </div>
         </div>
     </a>
+    {% endif %}
 </div>
 </div>
 {% endblock %}
