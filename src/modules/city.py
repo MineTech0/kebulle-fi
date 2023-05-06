@@ -7,4 +7,3 @@ def insert_city(name, region_id):
         'INSERT INTO cities (name, region_id) VALUES (%s, %s)  RETURNING id;', (name, region_id))
     rowId = cur.fetchone()[0]
     return rowId
-
