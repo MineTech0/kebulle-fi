@@ -1,14 +1,15 @@
-from flask import render_template, request, redirect, flash, url_for
+from flask import render_template, request, redirect, flash, url_for, session
+from src.validators.new_restaurant_validator import new_restaurant_validator
 from src.app import app
-from src.modules import city, region, restaurant, review
+from src.modules import city, leaderboard, region, restaurant, review
 
 
 @app.route('/')
 def index():
     """Front page of the website.
     """
-    
-    return render_template('index.html', restaurant=restaurant.get_best_rated_restaurant())
+
+    return render_template('index.html', restaurant=restaurant.get_best_rated_restaurant(), leaderboard=leaderboard.get_top5_restaurants())
 
 
 @app.route('/about')
@@ -73,10 +74,12 @@ def create_restaurant_review(id):
 def show_restaurant(id):
     restaurant_data = restaurant.get_restaurant_with_reviews(id)
     review_summary = review.get_restaurant_review_summary(id)
-    # sum all reviw_summary values and divide by 5 to get average rating
+
+    has_voted = session.get('has_voted')
+
     if review_summary:
         restaurant_data['rating'] = sum(review_summary.values()) / 7
-    return render_template('restaurant.html', restaurant=restaurant_data, review_summary=review_summary)
+    return render_template('restaurant.html', restaurant=restaurant_data, review_summary=review_summary, has_voted=has_voted)
 
 
 @app.route('/restaurants/<int:restaurant_id>/review', methods=['POST'])
@@ -112,4 +115,14 @@ def add_review(restaurant_id):
 
     review.insert_review(new_review)
     flash('Kiitos arvostelusta!')
+    return redirect(url_for('show_restaurant', id=restaurant_id))
+
+
+@app.route('/restaurants/<int:restaurant_id>/vote', methods=['POST'])
+def vote(restaurant_id):
+    if 'has_voted' in session and session.get('has_voted'):
+        return redirect(url_for('show_restaurant', id=restaurant_id))
+    # add session token for user to prevent multiple votes
+    session['has_voted'] = True
+    leaderboard.vote_restaurant(restaurant_id)
     return redirect(url_for('show_restaurant', id=restaurant_id))

@@ -38,7 +38,6 @@ restaurant_id INTEGER REFERENCES restaurants(id) ON DELETE CASCADE
 
 CREATE TABLE votes (
 id SERIAL PRIMARY KEY,
-user_name VARCHAR(255) NOT NULL,
 vote BOOLEAN NOT NULL,
 created_at DATE NOT NULL,
 restaurant_id INTEGER REFERENCES restaurants(id) ON DELETE CASCADE

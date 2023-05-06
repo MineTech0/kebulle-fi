@@ -16,6 +16,15 @@
     {% with rating=restaurant.rating %}
     {% include 'includes/rating_chip.html' %}
     {% endwith %}
+
+    {% if not has_voted %}
+    <form action="{{ url_for('vote', restaurant_id=restaurant.id) }}" method="POST">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
+        <button type="submit" class="primary-button my-4">Äänestä</button>
+    </form>
+    {% endif %}
+
+
     {% if review_summary %}
     <div class="restaurant-card mt-4">
         <h3>Arvostelu</h3>
