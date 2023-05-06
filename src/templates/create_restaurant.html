@@ -3,13 +3,14 @@
 {% block content %}
 <div class="page-container">
   <h2>Lisää ravintola</h2>
+  {% include 'includes/errors.html' %}
   <form method="post" action="/restaurants">
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"/>
     <div class="mb-4">
       <label class="form-label for="name">
         Nimi
       </label>
-      <input required class="form-input" name="name" type="text" placeholder="Syötä ravintolan nimi">
+      <input reguired class="form-input" name="name" type="text" placeholder="Syötä ravintolan nimi">
     </div>
     <div class="mb-4">
       <label class="form-label" for="address">
@@ -43,6 +44,9 @@
         </select>
         <input class="form-input mt-4" name="other-city" type="text" placeholder="Syötä uusi kaupunki">
       </div>
+      <span class="flex items-center text-gray-500 text-sm mt-2">
+      Jos kaupunkia ei löydy luo uusi kohdasta "Muu Kaupunki"
+    </span>
     </div>
     <div class="flex items-center justify-between">
       <button class="primary-button" type="submit">

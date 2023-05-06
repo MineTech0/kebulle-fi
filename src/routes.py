@@ -1,4 +1,5 @@
 from flask import render_template, request, redirect, flash, url_for, session
+from src.validators.new_review_validator import new_review_validator
 from src.validators.new_restaurant_validator import new_restaurant_validator
 from src.app import app
 from src.modules import city, leaderboard, region, restaurant, review
@@ -56,10 +57,20 @@ def add_restaurant():
     name = request.form['name']
     address = request.form['address']
     city_id = request.form['city']
+
     if city_id == 'other':
         other_city_name = request.form['other-city']
         region_id = request.form['region']
         city_id = city.insert_city(other_city_name, region_id)
+
+    if not new_restaurant_validator.validate({
+        'name': name,
+        'address': address,
+        'city_id': city_id
+    }):
+        flash(new_restaurant_validator.getErrors(), 'error')
+        return redirect(url_for('create_restaurant'))
+
     restaurant.insert_restaurant(name, address, city_id)
     flash('Ravintola lisätty onnistuneesti!')
     return redirect('/restaurants')
@@ -95,10 +106,6 @@ def add_review(restaurant_id):
     fries_rating = request.form['fries_rating']
     vegan_options = True if request.form.get('vegan_options') else False
 
-    if not user_name or not comment:
-        flash('Täytä nimi, kommentti ja päivämäärä.')
-        return redirect(url_for('new_review'))
-
     new_review = {
         'user_name': user_name,
         'comment': comment,
@@ -112,6 +119,10 @@ def add_review(restaurant_id):
         'vegan_options': vegan_options,
         'restaurant_id': restaurant_id
     }
+
+    if not new_review_validator.validate(new_review):
+        flash(new_review_validator.getErrors(), 'error')
+        return redirect(url_for('create_restaurant_review', id=restaurant_id))
 
     review.insert_review(new_review)
     flash('Kiitos arvostelusta!')
